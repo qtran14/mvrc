@@ -30,6 +30,7 @@ $scripts = [
     'create_expenses_table' => 'expenses/create_expenses_table.php',
     'create_expenses_categories_table' => 'expenses/create_expenses_categories_table.php',
     'create_expenses_status_table' => 'expenses/create_expenses_status_table.php',
+    'create_expenses_pictures_table' => 'expenses/create_expenses_pictures_table.php',
 ];
 
 foreach ($scripts as $desc => $path) {
