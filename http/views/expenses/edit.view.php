@@ -98,7 +98,7 @@
                    		<div class="col-sm-offset-3">
                         <input type="hidden" id="expenseHiddenId" name="id" value="<?= $data['id']; ?>">
 
-                        <a class="btn btn-success" href="/expenses">Back to Expense History</a>
+                        <a class="btn btn-danger" href="/expenses">Back to Expense History</a>
                    			<button type="submit" name="update" value="1" id="addBtnId" class="btn btn-theme">Submit</button>
                    		</div>
                    	</div>
