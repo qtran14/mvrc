@@ -20,6 +20,11 @@ var EditExpenses = function ()  {
                 $.each(data['images'], function(index, value) {
                     $('#gallery').append(value);
                 });
+
+                $('.gallery-img').on('click', function (event) {
+                    event.preventDefault();
+                    $('#imageAnchor').attr('src', $(this).data('source'));
+                });
             });
         },
 

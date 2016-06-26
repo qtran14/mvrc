@@ -115,6 +115,18 @@
 
 </div>
 
-<footer class="footer-content">
-    
-</footer>
+<div class="modal fade launch-modal-photo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-photo-viewer">
+      <div class="modal-content">
+          <div class="row">
+
+              <div class="col-md-12 col-sm-12 modal-photo-left">
+                  <div class="modal-photo">
+                      <img id="imageAnchor" src="" class="photo img-responsive" alt="...">
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
