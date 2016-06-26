@@ -29,6 +29,7 @@ var HistoryList = function ()  {
                 autoWidth: false,
                 Paginate: false,
                 paging: true,
+                "pageLength": 20,
                 lengthMenu: [[10, 15, 20, 25, 50, 100, 500, -1], [10, 15, 20, 25, 50, 100, 500, 'All']],
                 order: [[ 1, "desc" ]],
                 columnDefs: [
