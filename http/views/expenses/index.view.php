@@ -1,3 +1,6 @@
+<?php
+// dd($data);
+?>
 <div class="header-content">
     <h2><i class="fa fa-file-o"></i>Expenses</h2>
     <div class="breadcrumb-wrapper hidden-xs">
@@ -14,12 +17,35 @@
                     <h3 class="panel-title">Expense History</h3>
 
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-8">
                             <a href="/expenses/add" class="btn btn-success">Add</a>
                             <a href="/expenses/upload" class="btn btn-theme">Upload...</a>
                         </div>
-                        <div class="col-md-6 text-right">
-                            Filter status: status here...
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <label for="selectExpenseStatus" class="col-sm-2 control-label text-right">Status</label>
+                                </div>
+                                <div class="col-md-10">
+                                    <select id="selectExpenseStatus" class="chosen-select">
+                                        <option value="">All</option>
+                                        <?php 
+                                            foreach ( $data['expneses_status'] as $id => $statusName ) { 
+                                                $selected = '';
+                                                if ( $id == 1 ) $selected = ' selected ';
+                                        ?>
+
+                                            <option value="<?= $id; ?>"<?= $selected; ?>><?= $statusName; ?></option>
+                                        <?php } ?>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- <div class="form-group">
+                                
+                                <div class="col-sm-4">
+                                    
+                                </div>
+                            </div> -->
                         </div>
                     </div>
                 </div>

@@ -9,6 +9,7 @@ var HistoryList = function ()  {
 
     return {
         init: function () {
+            $('.chosen-select').chosen();
             HistoryList.datatable();
         },
 
@@ -27,7 +28,7 @@ var HistoryList = function ()  {
                 processing: true,
                 autoWidth: false,
                 Paginate: false,
-                paging: false,
+                paging: true,
                 lengthMenu: [[10, 15, 20, 25, 50, 100, 500, -1], [10, 15, 20, 25, 50, 100, 500, 'All']],
                 order: [[ 1, "desc" ]],
                 columnDefs: [
@@ -42,11 +43,11 @@ var HistoryList = function ()  {
 
                 ajax: {
                     url: '/expenses/history',
-                    // data: {
-                    //     status: function () {
-                    //         return $('#statusFilterId').val();
-                    //     }
-                    // }
+                    data: {
+                        status: function () {
+                            return $('#selectExpenseStatus').val();
+                        }
+                    }
                 },
 
 
@@ -111,9 +112,9 @@ var HistoryList = function ()  {
             //     table.columns(1).search(this.value).draw();
             // });
 
-            // $('#statusFilterId').on('change', function () {
-            //     table.ajax.reload();
-            // });
+            $('#selectExpenseStatus').on('change', function () {
+                table.ajax.reload();
+            });
         },
 
     };

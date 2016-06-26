@@ -25,5 +25,11 @@ class Expenses {
 	public function save($inputData) {
 		return $this->db->insert($this->table, $inputData);
 	}
+
+	public function update($inputData, $expenseHash, $accountHash) {
+		$this->db->where('hash', $expenseHash);
+		$this->db->where('account_hash', $accountHash);
+		return $this->db->update($this->table, $inputData);
+	}
 }
 ?>

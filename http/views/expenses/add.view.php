@@ -21,14 +21,14 @@
                   <form method="POST" action="/expenses/store" id="addExpensesFormId" class="form-horizontal mt-10">
                    	<div class="form-body">
                    	    <div class="form-group">
-                            <label for="inputExpenseDate" class="col-sm-3 control-label">Date</label>
+                            <label for="inputExpenseDate" class="col-sm-3 control-label"><strong>Date</strong></label>
                             <div class="col-sm-7">
                                 <input type="text" name="expense_date" class="form-control" id="inputExpenseDate" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                          <label for="selectExpenseCategory" class="col-sm-3 control-label">Category</label>
+                          <label for="selectExpenseCategory" class="col-sm-3 control-label"><strong>Category</strong></label>
                           <div class="col-sm-7">
                             <select name="expense_category" id="selectExpenseCategory" class="chosen-select">
                               <option value="">Select</option>
@@ -40,21 +40,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputExpenseName" class="col-sm-3 control-label">Name</label>
+                            <label for="inputExpenseName" class="col-sm-3 control-label"><strong>Name</strong></label>
                             <div class="col-sm-7">
                                 <input type="text" name="expense_name" class="form-control" id="inputExpenseName" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputExpenseTotal" class="col-sm-3 control-label">Total</label>
+                            <label for="inputExpenseTotal" class="col-sm-3 control-label"><strong>Total</strong></label>
                             <div class="col-sm-7">
                                 <input type="text" name="expense_total" class="form-control" id="inputExpenseTotal" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="textExpenseNotes" class="col-sm-3 control-label">Notes</label>
+                            <label for="textExpenseNotes" class="col-sm-3 control-label"><strong>Notes</strong></label>
                             <div class="col-sm-7">
                                 <textarea name="expense_notes" id="textExpenseNotes" class="form-control" rows="5" placeholder=""></textarea>
                             </div>

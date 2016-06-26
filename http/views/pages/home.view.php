@@ -136,7 +136,7 @@
     <div class="row">
         <div class="col-md-9">
             <div class="table-responsive rounded mb-20">
-                <table id="tour-16" class="table table-striped table-theme">
+                <table id="tour-161213" class="table table-striped table-theme">
                     <thead>
                     <tr>
                         <th class="text-center border-right">No.</th>

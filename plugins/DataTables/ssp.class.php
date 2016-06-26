@@ -315,13 +315,14 @@ class SSP {
 //             $limit");
 
         // Main query to actually get the data
-        $data = $db->rawQuery(
-            "SELECT SQL_CALC_FOUND_ROWS ".implode(", ", self::pluck($columns, 'db'))."
+        $sql = "SELECT SQL_CALC_FOUND_ROWS ".implode(", ", self::pluck($columns, 'db'))."
              FROM `$table`
              $mainWhere
              $order
-             $limit"
-        );
+             $limit";
+// die($sql);
+
+        $data = $db->rawQuery($sql);
 //        dd($data);
 
         // Data set length after filtering
@@ -332,11 +333,12 @@ class SSP {
 
         $recordsFiltered = $resFilterLength[0]['found_row'];
         // Total data set length
-        $resTotalLength = $db->rawQuery(
-            "SELECT COUNT(`{$primaryKey}`) AS counter
+        $sql = "SELECT COUNT({$primaryKey}) AS counter
              FROM   `$table`
-             $mainWhere"
-        );
+             $mainWhere";
+// die($sql);
+
+        $resTotalLength = $db->rawQuery($sql);
 //dd($resTotalLength);
         $recordsTotal = $resTotalLength[0]['counter'];
 
