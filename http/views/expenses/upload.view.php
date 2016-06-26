@@ -33,7 +33,7 @@
                                                 <span class="fileupload-preview"></span>
                                             </div>
                                             <span class="btn btn-success btn-file btn-sm">
-                                                <span class="fileupload-new">Upload profile</span>
+                                                <span class="fileupload-new">Upload</span>
                                                 <span class="fileupload-exists">Change</span>
                                                 <input type="file" name="expense_file" id="expenseFile" />
                                             </span>
