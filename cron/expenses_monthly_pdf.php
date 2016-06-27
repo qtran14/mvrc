@@ -45,7 +45,6 @@ foreach ( $results as $row ) {
 				AND expenses.account_hash='{$accountHash}'
 			ORDER BY expenses.on_date ASC
 			";
-die($sql);			
 	$expenses = $db->rawQuery($sql);
 
 	if ( ! empty($expenses) ) {
