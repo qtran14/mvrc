@@ -20,6 +20,8 @@ require_once CRON_DIR . DS . 'config.php';
 $sql = "SELECT hash FROM accounts";
 $results = $db->rawQuery($sql);
 
+$thisMonth = date('Y-m') . '-01';
+
 foreach ( $results as $row ) {
 	$accountHash = $row['hash'];
 
@@ -38,10 +40,12 @@ foreach ( $results as $row ) {
 											AND expenses_categories.id=expenses.category_id
 
 			WHERE 1=1
+				AND expenses.on_date<'{$thisMonth}'
 				AND expenses.status_id=2
 				AND expenses.account_hash='{$accountHash}'
 			ORDER BY expenses.on_date ASC
 			";
+die($sql);			
 	$expenses = $db->rawQuery($sql);
 
 	if ( ! empty($expenses) ) {
