@@ -23,7 +23,7 @@
                    	    <div class="form-group">
                             <label for="inputExpenseDate" class="col-sm-3 control-label"><strong>Date</strong></label>
                             <div class="col-sm-7">
-                                <input type="text" name="expense_date" class="form-control" id="inputExpenseDate" placeholder="">
+                                <input type="text" name="expense_date" class="form-control datepicker-field" id="inputExpenseDate" placeholder="">
                             </div>
                         </div>
 
@@ -49,7 +49,10 @@
                         <div class="form-group">
                             <label for="inputExpenseTotal" class="col-sm-3 control-label"><strong>Total</strong></label>
                             <div class="col-sm-7">
+                              <div class="input-group">
+                                <span class="input-group-addon">$</span>
                                 <input type="text" name="expense_total" class="form-control" id="inputExpenseTotal" placeholder="">
+                              </div>
                             </div>
                         </div>
 

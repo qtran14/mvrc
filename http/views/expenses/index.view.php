@@ -68,7 +68,7 @@
                         <tfoot>
                             <tr>
                                 <th colspan="5" style="text-align:right">Total:</th>
-                                <th colspan="3">&nbsp;</th>
+                                <th colspan="3" id="grandTotal">&nbsp;</th>
                             </tr>
                         </tfoot>
                     </table>

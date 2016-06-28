@@ -43,8 +43,11 @@ function getImage($expenseHash, $accountHash) {
 }
 
 $out = [];
+$total = 0.00;
 for ($i = 0; $i < count($results['data']); $i++) {
     $data = $results['data'][$i];
+    
+    $total += $data['amount'];
     $row = [];
 
     $row[] = getImage($data['hash'], $loginInfo['account_hash']);
@@ -60,6 +63,7 @@ for ($i = 0; $i < count($results['data']); $i++) {
     $out[] = $row;
 }
 $results['data'] = $out;
+$results['grand_total'] = number_format($total, 2);
 
 
 die(json_encode($results));

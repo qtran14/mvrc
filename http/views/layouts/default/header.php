@@ -34,6 +34,9 @@
         <!-- START @PAGE LEVEL STYLES -->
         <link href="/assets/global/plugins/bower_components/fontawesome/css/font-awesome.min.css" rel="stylesheet">
         <link href="/assets/global/plugins/bower_components/animate.css/animate.min.css" rel="stylesheet">
+        <link href="/assets/global/plugins/bower_components/chosen_v1.2.0/chosen.css" rel="stylesheet">
+        <link href="/assets/global/plugins/bower_components/bootstrap-datepicker-vitalets/css/datepicker.css" rel="stylesheet">
+        <link href="/assets/global/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
 
         <?php
             if ( ! empty($htmlPluginCSS) ) {

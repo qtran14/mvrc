@@ -22,6 +22,9 @@
 <script src="/assets/global/plugins/bower_components/jquery-easing-original/jquery.easing.1.3.min.js"></script>
 <script src="/assets/global/plugins/bower_components/ionsound/js/ion.sound.min.js"></script>
 <script src="/assets/global/plugins/bower_components/bootbox/bootbox.js"></script>
+<script src="/assets/global/plugins/bower_components/chosen_v1.2.0/chosen.jquery.js"></script>
+<script src="/assets/global/plugins/bower_components/bootstrap-datepicker-vitalets/js/bootstrap-datepicker.js"></script>
+<script src="/assets/global/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!--/ END CORE PLUGINS -->
 
 <!-- START @PAGE LEVEL PLUGINS -->

@@ -14,6 +14,12 @@ var BlankonApp = function(){
         // CONSTRUCTOR APP
         // =========================================================================
         init: function () {
+            $('.chosen-select').chosen();
+            $('.datepicker-field').datepicker({
+                format: 'mm/dd/yyyy',
+                autoclose: true,
+            });
+
             BlankonApp.handleBaseURL();
             BlankonApp.handleIE();
             BlankonApp.handleCheckCookie();

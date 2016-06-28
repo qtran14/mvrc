@@ -9,7 +9,6 @@ var HistoryList = function ()  {
 
     return {
         init: function () {
-            $('.chosen-select').chosen();
             HistoryList.datatable();
         },
 
@@ -64,16 +63,8 @@ var HistoryList = function ()  {
                 drawCallback   : function (oSettings) {
                     responsiveHelperAjax.respond();
 
-                    // $('.swap-image').each(function () {
-                    //     $(this).on('click', function () {
-                    //         var eventId = '#main_image_' + $(this).data('event-id');
-                    //         var swapImage = $(this).data('image-src');
-
-                    //         $(eventId).attr('src', swapImage);
-
-                    //         return false;
-                    //     });
-                    // });
+                    var json = table.ajax.json();
+                    $('#grandTotal').html('$' + json.grand_total);
                 },
                 footerCallback: function ( row, data, start, end, display ) {
                     // var api = this.api(), data;
