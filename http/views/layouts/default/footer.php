@@ -24,6 +24,7 @@
 <script src="/assets/global/plugins/bower_components/bootbox/bootbox.js"></script>
 <script src="/assets/global/plugins/bower_components/chosen_v1.2.0/chosen.jquery.js"></script>
 <script src="/assets/global/plugins/bower_components/bootstrap-datepicker-vitalets/js/bootstrap-datepicker.js"></script>
+<script src="/assets/global/plugins/bower_components/moment/min/moment.min.js"></script>
 <script src="/assets/global/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
 <!--/ END CORE PLUGINS -->
 
