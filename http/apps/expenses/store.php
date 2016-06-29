@@ -3,8 +3,43 @@
 $post = $httpRequest->post;
 $loginInfo = Session::get('user');
 
+
+function validateAdd($post) {
+	$validator = new GUMP;
+
+	$rules = [
+		'expense_date' => 'required|date',
+		'expense_category' => 'required|integer',
+		'expense_name' => "required",
+		'expense_total' => "required|numeric",
+	];
+
+	$filters = [
+		'expense_date' => 'trim',
+		'expense_category' => 'trim',
+		'expense_name' => "trim",
+		'expense_total' => "trim",
+	];
+
+	$postDate = $post['expense_date'];
+	$post['expense_date'] = dbDate($postDate);
+	$post = $validator->filter($post, $filters);
+
+	$validated = $validator->validate($post, $rules);
+
+	if ( $validated === TRUE ) return $validated;
+
+
+	$post['expense_date'] = ! empty($postDate) ? displayDate($postDate) : '';
+	Session::set('post_data', $post);
+	Session::setFlash('error', '* is required field');
+	redirect('/expenses/add');
+}
+
 if ( isset($post['add']) && $post['add'] == '1' ) {
-	$inputData = [
+	validateAdd($post);
+
+	(new Expenses)->save([
 		'hash' => getUUID(60, getDB(), 'expenses', 'hash'),
 		'account_hash' => $loginInfo['account_hash'],
 		'on_date' => dbDate($post['expense_date']),
@@ -14,16 +49,55 @@ if ( isset($post['add']) && $post['add'] == '1' ) {
 		'amount' => $post['expense_total'],
 		'description' => encodeQuote($post['expense_notes']),
 		'created_by' => $loginInfo['id'],
-	];
-
-	(new Expenses)->save($inputData);
+	]);
 
 	Session::setFlash('success', "Expense added.");
 	redirect('/expenses');
 }
 
+function validateEdit($post, $loginInfo) {
+	if ( ! (new Expenses)->exist($post['id'], $loginInfo['account_hash']) || $post['expense_status'] == 3 ) {
+		Session::setFlash('error', 'Invalid request.');
+		redirect('/expenses');
+	}
+
+	$validator = new GUMP;
+
+	$rules = [
+		'expense_date' => 'required|date',
+		'expense_category' => 'required|integer',
+		'expense_name' => 'required',
+		'expense_total' => 'required|numeric',
+		'expense_status' => 'required|integer',
+	];
+
+	$filters = [
+		'expense_date' => 'trim',
+		'expense_category' => 'trim',
+		'expense_name' => 'trim',
+		'expense_total' => 'trim',
+		'expense_status' => 'trim',
+		'expense_notes' => 'trim',
+	];
+
+	$postDate = $post['expense_date'];
+	$post['expense_date'] = dbDate($postDate);
+	$post = $validator->filter($post, $filters);
+
+	$validated = $validator->validate($post, $rules);
+
+	if ( $validated === TRUE ) return $validated;
+
+
+	$post['expense_date'] = ! empty($postDate) ? displayDate($postDate) : '';
+	Session::setFlash('error', '* is required field');
+	redirect('/expenses/edit?id=' . $post['id']);
+}
+
 if ( isset($post['update']) && $post['update'] == '1' && ! empty($post['id']) ) {
-	$inputData = [
+	validateEdit($post, $loginInfo);
+
+	(new Expenses)->update([
 		'on_date' => dbDate($post['expense_date']),
 		'name' => encodeQuote($post['expense_name']),
 		'category_id' => $post['expense_category'],
@@ -31,12 +105,10 @@ if ( isset($post['update']) && $post['update'] == '1' && ! empty($post['id']) ) 
 		'amount' => $post['expense_total'],
 		'description' => encodeQuote($post['expense_notes']),
 		'last_updated_by' => $loginInfo['id'],
-	];
-
-
-	(new Expenses)->update($inputData, $post['id'], $loginInfo['account_hash']);
+	], $post['id'], $loginInfo['account_hash']);
 
 	Session::setFlash('success', "Expense updated.");
 	redirect('/expenses');
-	// redirect('/expenses/edit?id=' . $post['id']);
 }
+
+require_once abort();

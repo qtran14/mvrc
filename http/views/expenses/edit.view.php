@@ -24,20 +24,19 @@
                     <h3 class="panel-title">Edit Form</h3>
                 </div>
                 <div class="panel-body">
-                  <form method="POST" action="/expenses/store" id="addExpensesFormId" class="form-horizontal mt-10">
+                  <form method="POST" action="/expenses/store" id="iEditExpensesForm" class="form-horizontal mt-10">
                    	<div class="form-body">
                    	    <div class="form-group">
-                            <label for="inputExpenseDate" class="col-sm-3 control-label"><strong>Date</strong></label>
+                            <label for="inputExpenseDate" class="col-sm-3 control-label"><strong>Date</strong> <span class="asterisk">*</span></label>
                             <div class="col-sm-7">
-                                <input type="text" name="expense_date" value="<?= displayDate($data['info']['on_date']) ?>" class="form-control" id="inputExpenseDate" placeholder="">
+                                <input type="text" name="expense_date" value="<?= displayDate($data['info']['on_date']) ?>" class="form-control datepicker-field" id="inputExpenseDate" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                          <label for="selectExpenseCategory" class="col-sm-3 control-label"><strong>Category</strong></label>
+                          <label for="selectExpenseCategory" class="col-sm-3 control-label"><strong>Category</strong> <span class="asterisk">*</span></label>
                           <div class="col-sm-7">
                             <select name="expense_category" id="selectExpenseCategory" class="chosen-select">
-                              <option value="">Select</option>
                               <?php 
                                 foreach ( $data['expense_category_list'] as $key => $name ) {
                                   $selected = '';
@@ -50,21 +49,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="inputExpenseName" class="col-sm-3 control-label"><strong>Name</strong></label>
+                            <label for="inputExpenseName" class="col-sm-3 control-label"><strong>Name</strong> <span class="asterisk">*</span></label>
                             <div class="col-sm-7">
                                 <input type="text" name="expense_name" value="<?= $data['info']['name']; ?>" class="form-control" id="inputExpenseName" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputExpenseTotal" class="col-sm-3 control-label"><strong>Total</strong></label>
+                            <label for="inputExpenseTotal" class="col-sm-3 control-label"><strong>Total</strong> <span class="asterisk">*</span></label>
                             <div class="col-sm-7">
                                 <input type="text" name="expense_total" value="<?= $data['info']['amount']; ?>" class="form-control" id="inputExpenseTotal" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                          <label for="selectStatus" class="col-sm-3 control-label"><strong>Status</strong></label>
+                          <label for="selectStatus" class="col-sm-3 control-label"><strong>Status</strong> <span class="asterisk">*</span></label>
                           <div class="col-sm-7">
                             <select name="expense_status" id="selectStatus" class="chosen-select">
                               <?php 

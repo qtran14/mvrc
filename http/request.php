@@ -7,6 +7,11 @@ $htmlPluginJS   = [];
 $htmlCustomJS   = [];
 $data 			= [];
 
+if ( Session::has('post_data') ) {
+	$data = Session::get('post_data');
+	Session::delete('post_data');
+}
+
 // dd($_SESSION); 
 // dd($httpRequest);
 

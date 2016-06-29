@@ -3,25 +3,29 @@
 
 if ( ! function_exists('displayDate')) {
   function displayDate($date) {
-    return date('m/d/Y', strtotime($date));
+    if ( ! empty($date) ) return date('m/d/Y', strtotime($date));
+    return '';
   }
 }
 
 if ( ! function_exists('displayDateTime')) {
   function displayDateTime($date) {
-    return date('m/d/Y H:i A', strtotime($date));
+    if ( ! empty($date) ) return date('m/d/Y H:i A', strtotime($date));
+    return '';
   }
 }
 
 if ( ! function_exists('dbDate')) {
   function dbDate($date) {
-    return date('Y-m-d', strtotime($date));
+    if ( ! empty($date) ) return date('Y-m-d', strtotime($date));
+    return '';
   }
 }
 
 if ( ! function_exists('dbDateTime')) {
   function dbDateTime($date) {
-    return date('Y-m-d', strtotime($date));
+    if ( ! empty($date) ) return date('Y-m-d H:i:s', strtotime($date));
+    return '';
   }
 }
 

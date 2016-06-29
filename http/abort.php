@@ -5,3 +5,4 @@ $htmlPluginCSS  = [
 ];
 
 renderView('abort');
+die();

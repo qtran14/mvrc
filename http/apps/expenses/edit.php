@@ -4,18 +4,12 @@ $data['active_expenses'] = 'active';
 $data['active_expense_main'] = 'active';
 
 $htmlPluginCSS  = [
-	// '/assets/global/plugins/bower_components/datatables/css/dataTables.bootstrap',
-	// '/assets/global/plugins/bower_components/datatables/css/datatables.responsive',
-	// '/assets/global/plugins/bower_components/fuelux/dist/css/fuelux.min',
 	'/assets/global/plugins/bower_components/dropzone/downloads/css/dropzone',
 	'/assets/admin/css/pages/gallery',
 ];
 $htmlPluginJS   = [
-	// '/assets/global/plugins/bower_components/datatables/js/jquery.dataTables.min',
-	// '/assets/global/plugins/bower_components/datatables/js/dataTables.bootstrap',
-	// '/assets/global/plugins/bower_components/datatables/js/datatables.responsive',
-	// '/assets/global/plugins/bower_components/fuelux/dist/js/fuelux.min',
 	'/assets/global/plugins/bower_components/dropzone/downloads/dropzone.min',
+	'/assets/global/plugins/bower_components/jquery-validation/dist/jquery.validate.min',
 ];
 
 $htmlCustomJS   = [

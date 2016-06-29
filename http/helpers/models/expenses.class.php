@@ -15,9 +15,9 @@ class Expenses {
 	}
 
 	public function exist($hash, $accountHash) {
-		$userInfo = $this->info($hash, $accountHash);
+		$info = $this->info($hash, $accountHash);
 
-		if ( count($userInfo) > 0 ) return true; 
+		if ( count($info) > 0 ) return true; 
 
 		return false;
 	}

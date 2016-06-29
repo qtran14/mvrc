@@ -1,5 +1,6 @@
 <?php
 // dd($data);
+// dd(Session::get('post_errors'));
 ?>
 
 <div class="header-content">
@@ -18,40 +19,45 @@
                     <h3 class="panel-title">Add Form</h3>
                 </div>
                 <div class="panel-body">
-                  <form method="POST" action="/expenses/store" id="addExpensesFormId" class="form-horizontal mt-10">
+                  <form method="POST" action="/expenses/store" id="addExpensesForm" class="form-horizontal mt-10">
                    	<div class="form-body">
                    	    <div class="form-group">
-                            <label for="inputExpenseDate" class="col-sm-3 control-label"><strong>Date</strong></label>
+                            <label for="inputExpenseDate" class="col-sm-3 control-label"><strong>Date</strong> <span class="asterisk">*</span></label>
                             <div class="col-sm-7">
-                                <input type="text" name="expense_date" class="form-control datepicker-field" id="inputExpenseDate" placeholder="">
+                                <input type="text" name="expense_date" value="<?= isset($data['expense_date']) ? $data['expense_date'] : ''; ?>" class="form-control datepicker-field" id="inputExpenseDate" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                          <label for="selectExpenseCategory" class="col-sm-3 control-label"><strong>Category</strong></label>
+                          <label for="selectExpenseCategory" class="col-sm-3 control-label"><strong>Category</strong> <span class="asterisk">*</span></label>
                           <div class="col-sm-7">
                             <select name="expense_category" id="selectExpenseCategory" class="chosen-select">
                               <option value="">Select</option>
-                              <?php foreach ( $data['expense_category_list'] as $key => $name ) { ?>
-                                <option value="<?= $key; ?>"><?= $name; ?></option>
+                              <?php
+                                $expensesCategory = isset($data['expense_category']) ? $data['expense_category'] : '';
+                                foreach ( $data['expense_category_list'] as $key => $name ) { 
+                                  $selected = '';
+                                  if ( $expensesCategory == $key ) $selected = ' selected="selected"';
+                              ?>
+                                <option value="<?= $key; ?>"<?= $selected; ?>><?= $name; ?></option>
                               <?php } ?>
                             </select>
                           </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputExpenseName" class="col-sm-3 control-label"><strong>Name</strong></label>
+                            <label for="inputExpenseName" class="col-sm-3 control-label"><strong>Name</strong> <span class="asterisk">*</span></label>
                             <div class="col-sm-7">
-                                <input type="text" name="expense_name" class="form-control" id="inputExpenseName" placeholder="">
+                                <input type="text" name="expense_name" value="<?= isset($data['expense_name']) ? $data['expense_name'] : ''; ?>" class="form-control" id="inputExpenseName" placeholder="">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label for="inputExpenseTotal" class="col-sm-3 control-label"><strong>Total</strong></label>
+                            <label for="inputExpenseTotal" class="col-sm-3 control-label"><strong>Total</strong> <span class="asterisk">*</span></label>
                             <div class="col-sm-7">
                               <div class="input-group">
                                 <span class="input-group-addon">$</span>
-                                <input type="text" name="expense_total" class="form-control" id="inputExpenseTotal" placeholder="">
+                                <input type="text" name="expense_total" value="<?= isset($data['expense_total']) ? $data['expense_total'] : ''; ?>" class="form-control" id="inputExpenseTotal" placeholder="">
                               </div>
                             </div>
                         </div>
@@ -59,7 +65,7 @@
                         <div class="form-group">
                             <label for="textExpenseNotes" class="col-sm-3 control-label"><strong>Notes</strong></label>
                             <div class="col-sm-7">
-                                <textarea name="expense_notes" id="textExpenseNotes" class="form-control" rows="5" placeholder=""></textarea>
+                                <textarea name="expense_notes" id="textExpenseNotes" class="form-control" rows="5" placeholder=""><?= isset($data['expense_notes']) ? $data['expense_notes'] : ''; ?></textarea>
                             </div>
                         </div>
 
