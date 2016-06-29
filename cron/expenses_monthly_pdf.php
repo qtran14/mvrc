@@ -25,7 +25,7 @@ $thisMonth = date('Y-m') . '-01';
 foreach ( $results as $row ) {
 	$accountHash = $row['hash'];
 
-	$sql = "SELECT 
+	$expenses = $db->rawQuery("SELECT 
 				expenses.id,
 				expenses.on_date,
 				expenses.name,
@@ -44,8 +44,7 @@ foreach ( $results as $row ) {
 				AND expenses.status_id=2
 				AND expenses.account_hash='{$accountHash}'
 			ORDER BY expenses.on_date ASC
-			";
-	$expenses = $db->rawQuery($sql);
+		");
 
 	if ( ! empty($expenses) ) {
 		$table = '';

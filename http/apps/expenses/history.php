@@ -24,8 +24,11 @@ $columns = [
 $results = SSP::simple(getDB(), $httpRequest->get, $table, $primaryKey, $columns, $extraWhere);
 // dd($results);
 
-function buildEditBtn($id) {
-    return '<a class="btn btn-sm btn-primary btn-xs btn-push" data-toggle="tooltip" data-placement="top" data-original-title="Edit" href="' . APP_URL . 'expenses/edit?id=' . $id . '"><i class="fa fa-pencil"></i> Edit</a>';
+function buildBtn($id) {
+    $btn = '<a class="btn btn-sm btn-primary btn-xs btn-push" data-toggle="tooltip" data-placement="top" href="' . APP_URL . 'expenses/edit?id=' . $id . '"><i class="fa fa-pencil"></i> Edit</a>';
+    $btn .= '<a target="_blank" class="btn btn-sm btn-info btn-xs btn-push" data-toggle="tooltip" data-placement="top" href="' . APP_URL . 'expenses/view?id=' . $id . '"><i class="fa fa-file-pdf-o"></i> View</a>';
+
+    return $btn;
 }
 
 function getImage($expenseHash, $accountHash) {
@@ -57,8 +60,7 @@ for ($i = 0; $i < count($results['data']); $i++) {
     $row[] = str_replace(['<br/>', '<br />'], "\n", decodeQuote($data['description']));
     $row[] = '$'. number_format($data['amount'], 2);
     $row[] = $data['status'];
-    $row[] = buildEditBtn($data['hash']);
-    // $row[] = $view . $edit;
+    $row[] = buildBtn($data['hash']);
 
     $out[] = $row;
 }
