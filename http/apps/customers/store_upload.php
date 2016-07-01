@@ -33,7 +33,7 @@ if ( isset($post['upload']) && $post['upload'] == '1' ) {
 
 			$inputData = [
 				'account_hash' => $loginInfo['account_hash'],
-				'first_name' => dbDateTime($firstName),
+				'first_name' => encodeQuote($firstName),
 				'last_name' => encodeQuote($lastName),
 				'email' => encodeQuote($email),
 				'phone' => preg_replace('/[^0-9]/', '', $phone),
