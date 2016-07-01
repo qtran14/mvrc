@@ -34,6 +34,16 @@
             <li<?= isset($data['active_expense_main']) ? ' class="'. $data['active_expense_main'] .'"' : ''; ?>><a href="/expenses">Main</a></li>
         </ul>
     </li>
+    <li class="submenu<?= isset($data['active_customers']) ? ' '. $data['active_customers'] : ''; ?>">
+        <a href="javascript:void(0);">
+            <span class="icon"><i class="fa fa-group"></i></span>
+            <span class="text">Customers</span>
+            <span class="arrow"></span>
+        </a>
+        <ul>
+            <li<?= isset($data['active_customers_main']) ? ' class="'. $data['active_customers_main'] .'"' : ''; ?>><a href="/customers">Main</a></li>
+        </ul>
+    </li>
     <!--/ End navigation - mail -->
 
     <!-- Start navigation - blog -->
