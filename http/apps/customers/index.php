@@ -18,8 +18,8 @@ $htmlCustomJS   = [
 ];
 
 $htmlPageTitle = 'Customers';
-$data['active_customers'] = 'active';
-$data['active_customers_main'] = 'active';
+$data['customer_menu'] = 'active';
+$data['customer_main_menu'] = 'active';
 
 
 renderView('customers/index');

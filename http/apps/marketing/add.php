@@ -9,8 +9,8 @@ $htmlCustomJS   = [
 ];
 
 $htmlPageTitle = 'Add';
-$data['active_expenses'] = 'active';
-$data['active_expense_marketing'] = 'active';
+$data['expense_menu'] = 'active';
+$data['expense_marketing_menu'] = 'active';
 
 $data['expense_category_list'] = (new Expenses_Categories)->getList(2);
 

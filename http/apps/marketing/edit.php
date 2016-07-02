@@ -1,8 +1,4 @@
 <?php
-$htmlPageTitle = 'Edit Expense';
-$data['active_expenses'] = 'active';
-$data['active_expense_main'] = 'active';
-
 $htmlPluginCSS  = [
 	'/assets/global/plugins/bower_components/dropzone/downloads/css/dropzone',
 	'/assets/admin/css/pages/gallery',
@@ -30,6 +26,10 @@ $data = [
 	'info' => $info,
 	'expense_status_list' => (new Expenses_Status)->getListForEdit(),
 ];
+
+$htmlPageTitle = 'Edit Expense';
+$data['expense_menu'] = 'active';
+$data['expense_marketing_menu'] = 'active';
 
 renderView('marketing/edit');
 ?>

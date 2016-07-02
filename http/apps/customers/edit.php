@@ -1,8 +1,4 @@
 <?php
-$htmlPageTitle = 'Edit Customer';
-$data['active_customers'] = 'active';
-$data['active_customer_main'] = 'active';
-
 $htmlPluginCSS  = [
 	'/assets/global/plugins/bower_components/dropzone/downloads/css/dropzone',
 	'/assets/admin/css/pages/gallery',
@@ -22,6 +18,11 @@ $data = [
 	'info' => (new Customers)->info($customer_id, Session::get('user')['account_hash']),
 	'status_list' => (new Customers_Status)->getList(),
 ];
+
+$htmlPageTitle = 'Edit Customer';
+$data['customer_menu'] = 'active';
+$data['customer_main_menu'] = 'active';
+
 
 renderView('customers/edit');
 ?>

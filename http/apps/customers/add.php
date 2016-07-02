@@ -9,7 +9,8 @@
 // ];
 
 $htmlPageTitle = 'Add';
-$data['active_customers'] = 'active';
+$data['customer_menu'] = 'active';
+$data['customer_main_menu'] = 'active';
 
 
 renderView('customers/add');

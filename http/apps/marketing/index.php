@@ -1,7 +1,7 @@
 <?php
 $htmlPageTitle = 'Expense History';
-$data['active_expenses'] = 'active';
-$data['active_expense_marketing'] = 'active';
+$data['expense_menu'] = 'active';
+$data['expense_marketing_menu'] = 'active';
 
 $htmlPluginCSS  = [
 	'/assets/global/plugins/bower_components/datatables/css/dataTables.bootstrap',

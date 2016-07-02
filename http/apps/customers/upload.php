@@ -1,7 +1,7 @@
 <?php
 $htmlPageTitle = 'Customers Upload';
-$data['active_customers'] = 'active';
-$data['active_customers_main'] = 'active';
+$data['customer_menu'] = 'active';
+$data['customer_main_menu'] = 'active';
 
 $htmlPluginCSS  = [
 	'/assets/global/plugins/bower_components/bootstrap-fileupload/css/bootstrap-fileupload.min',

@@ -70,7 +70,3 @@
     </div>
 
 </div>
-
-<footer class="footer-content">
-    
-</footer>
