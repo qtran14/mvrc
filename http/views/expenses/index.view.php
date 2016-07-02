@@ -40,12 +40,6 @@
                                     </select>
                                 </div>
                             </div>
-                            <!-- <div class="form-group">
-                                
-                                <div class="col-sm-4">
-                                    
-                                </div>
-                            </div> -->
                         </div>
                     </div>
                 </div>

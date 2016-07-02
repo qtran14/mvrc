@@ -4,11 +4,14 @@ $post = $httpRequest->post;
 
 if ( isset($post['upload']) && $post['upload'] == '1' ) {
 	$uploadedFile = $httpRequest->file;
-
 	$loginInfo = Session::get('user');
+	$accountUpload = [
+		'added' => [],
+		'existed' => [],
+	];
+
 
 	$filename = $uploadedFile['upload_file']['tmp_name'];
-
 	if ( ($handle = fopen($filename, "r")) !== FALSE ) {
 		$firstRow = true;
 		$columnMap = [];
@@ -30,6 +33,12 @@ if ( isset($post['upload']) && $post['upload'] == '1' ) {
 			$lastCallDate = $data[$columnMap['LAST_CALL_DATE']];
 
 			if ( empty($firstName) ) continue;
+			if ( $customer->existBy(encodeQuote($firstName), encodeQuote($lastName), $loginInfo['account_hash']) ) {
+				$accountUpload['existed'][] = $firstName . ' ' . $lastName;
+				continue;
+			}
+
+			$accountUpload['added'][] = $firstName . ' ' . $lastName;
 
 			$inputData = [
 				'account_hash' => $loginInfo['account_hash'],
@@ -38,6 +47,7 @@ if ( isset($post['upload']) && $post['upload'] == '1' ) {
 				'email' => encodeQuote($email),
 				'phone' => preg_replace('/[^0-9]/', '', $phone),
 				'last_call_date' => empty($lastCallDate) ? NULL : dbDateTime($lastCallDate),
+				'status' => 1,
 				'created_by' => $loginInfo['id'],
 			];
 
@@ -48,6 +58,9 @@ if ( isset($post['upload']) && $post['upload'] == '1' ) {
 	}
 
 
-	Session::setFlash('success', "Customers Added.");
-	redirect('/customers');
+	// Session::setFlash('success', "Customers Added.");
+	Session::set('upload_stat', $accountUpload);
+	redirect('/customers/upload_stat');
 }
+
+require_once abort();

@@ -1,9 +1,12 @@
 <?php
+$status = $httpRequest->get['status'];
 $loginInfo = Session::get('user');
 
 $table = 'customers';
 $primaryKey = "{$table}.id";
 $extraWhere = " {$table}.account_hash = '{$loginInfo['account_hash']}' ";
+
+if ( $status > 0 ) $extraWhere .= " AND {$table}.status = '{$status}' ";
 
 
 
@@ -21,10 +24,20 @@ $results = SSP::simple(getDB(), $httpRequest->get, $table, $primaryKey, $columns
 
 
 function formatDispayDate($date) {
-	if ( empty($date) || $date == '0000:00:00' ) return '';
-	if ( empty($date) || $date == '0000:00:00 00:00:00' ) return '';
-
+	if ( empty($date) || $date == '0000:00:00' || $date == '0000:00:00 00:00:00' ) return '';
 	return displayDate($date);
+}
+
+function buildBtn($id) {
+    $btn = ''; 
+    $btn .= '<a href="#" class="btn btn-danger btn-xs btn-push markAsCalledBtn" data-toggle="modal" data-target=".mCompleteCall" data-customer_id="' . $id . '"><i class="fa fa-phone"></i> Complete Call</a>';
+    $btn .= '<a href="/customers/edit?id=' . $id . '" class="btn btn-info btn-xs btn-push"><i class="fa fa-pencil"></i> Edit</a>';
+    if ( (new Customers)->hasNote($id) ) {
+        $btn .= '<a href="#" class="btn btn-warning btn-xs btn-push cNote" data-toggle="modal" data-target=".mNote" data-customer_id="' . $id . '"><i class="fa fa-sticky-note-o"></i> Notes</a>';
+    }
+
+    
+    return $btn;
 }
 
 $out = [];
@@ -39,7 +52,7 @@ for ($i = 0; $i < count($results['data']); $i++) {
     $row[] = $data['email'];
     $row[] = $data['phone'];
     $row[] = formatDispayDate($data['last_call_date']);
-    $row[] = '<a href="#" class="btn btn-danger btn-xs btn-push markAsCalledBtn" data-customer_id="' . $data['id'] . '"><i class="fa fa-phone"></i> Mark as Called</a>';
+    $row[] = buildBtn($data['id']);
 
     $out[] = $row;
 }

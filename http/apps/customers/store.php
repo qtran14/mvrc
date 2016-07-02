@@ -30,13 +30,20 @@ function validateAdd($post) {
 if ( isset($post['add']) && $post['add'] == '1' ) {
 	validateAdd($post);
 
-	(new Customers)->save([
+	$customer = new Customers;
+	if ( $customer->existBy(encodeQuote($post['customer_first_name']), encodeQuote($post['customer_last_name']), $loginInfo['account_hash']) ) {
+		Session::setFlash('error', "Customer has already existed.");
+		redirect('/customers');
+	}
+
+	$customer->save([
 		'account_hash' => $loginInfo['account_hash'],
 		'first_name' => encodeQuote($post['customer_first_name']),
 		'last_name' => encodeQuote($post['customer_last_name']),
 		'email' => encodeQuote($post['customer_email']),
 		'phone' => encodeQuote($post['customer_phone']),
 		'last_call_date' => empty($post['customer_last_call']) ? NULL : dbDateTime($post['customer_last_call']),
+		'status' => 1,
 		'created_by' => $loginInfo['id'],
 	]);
 
@@ -44,60 +51,48 @@ if ( isset($post['add']) && $post['add'] == '1' ) {
 	redirect('/customers');
 }
 
-// function validateEdit($post, $loginInfo) {
-// 	if ( ! (new Expenses)->exist($post['id'], $loginInfo['account_hash']) || $post['expense_status'] == 3 ) {
-// 		Session::setFlash('error', 'Invalid request.');
-// 		redirect('/expenses');
-// 	}
+function validateEdit($post, $loginInfo) {
+	if ( ! (new Customers)->exist($post['id'], $loginInfo['account_hash']) ) {
+		Session::setFlash('error', 'Invalid request.');
+		redirect('/customers');
+	}
 
-// 	$validator = new GUMP;
+	$validator = new GUMP;
 
-// 	$rules = [
-// 		'expense_date' => 'required|date',
-// 		'expense_category' => 'required|integer',
-// 		'expense_name' => 'required',
-// 		'expense_total' => 'required|numeric',
-// 		'expense_status' => 'required|integer',
-// 	];
+	$rules = [
+		'first_name' => 'required',
+	];
 
-// 	$filters = [
-// 		'expense_date' => 'trim',
-// 		'expense_category' => 'trim',
-// 		'expense_name' => 'trim',
-// 		'expense_total' => 'trim',
-// 		'expense_status' => 'trim',
-// 		'expense_notes' => 'trim',
-// 	];
+	$filters = [
+		'first_name' => 'trim',
+	];
 
-// 	$postDate = $post['expense_date'];
-// 	$post['expense_date'] = dbDate($postDate);
-// 	$post = $validator->filter($post, $filters);
+	$post = $validator->filter($post, $filters);
 
-// 	$validated = $validator->validate($post, $rules);
+	$validated = $validator->validate($post, $rules);
 
-// 	if ( $validated === TRUE ) return $validated;
+	if ( $validated === TRUE ) return $validated;
 
 
-// 	$post['expense_date'] = ! empty($postDate) ? displayDate($postDate) : '';
-// 	Session::setFlash('error', '* is required field');
-// 	redirect('/expenses/edit?id=' . $post['id']);
-// }
+	Session::set('post_data', $post);
+	Session::setFlash('error', '* is required field');
+	redirect('/customers/edit?id=' . $post['id']);
+}
 
-// if ( isset($post['update']) && $post['update'] == '1' && ! empty($post['id']) ) {
-// 	validateEdit($post, $loginInfo);
+if ( isset($post['update']) && $post['update'] == '1' && ! empty($post['id']) ) {
+	validateEdit($post, $loginInfo);
 
-// 	(new Expenses)->update([
-// 		'on_date' => dbDate($post['expense_date']),
-// 		'name' => encodeQuote($post['expense_name']),
-// 		'category_id' => $post['expense_category'],
-// 		'status_id' => $post['expense_status'],
-// 		'amount' => $post['expense_total'],
-// 		'description' => encodeQuote($post['expense_notes']),
-// 		'last_updated_by' => $loginInfo['id'],
-// 	], $post['id'], $loginInfo['account_hash']);
+	(new Customers)->udpate([
+		'first_name' => encodeQuote($post['first_name']),
+		'last_name' => encodeQuote($post['last_name']),
+		'email' => encodeQuote($post['email']),
+		'phone' => encodeQuote($post['phone']),
+		'status' => $post['status'],
+		'last_updated_by' => $loginInfo['id'],
+	], $post['id'], $loginInfo['account_hash']);
 
-// 	Session::setFlash('success', "Expense updated.");
-// 	redirect('/expenses');
-// }
+	Session::setFlash('success', "Customer updated.");
+	redirect('/customers');
+}
 
 require_once abort();
