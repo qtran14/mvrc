@@ -4,7 +4,7 @@ $status = $httpRequest->get['status'];
 
 $table = 'expenses';
 $primaryKey = "{$table}.id";
-$extraWhere = " {$table}.app_type_id = 1 ";
+$extraWhere = " {$table}.app_type_id = 2 ";
 $extraWhere .= " AND {$table}.account_hash = '{$loginInfo['account_hash']}' ";
 
 if ( ! empty( $status ) ) $extraWhere .= " AND  {$table}.status_id= '{$status}' ";
@@ -28,9 +28,9 @@ $results = SSP::simple(getDB(), $httpRequest->get, $table, $primaryKey, $columns
 
 function buildBtn($id, $status_id) {
     $btn = '';
-    $btn .= '<a target="_blank" class="btn btn-sm btn-info btn-xs btn-push" data-toggle="tooltip" data-placement="top" href="' . APP_URL . 'expenses/view?id=' . $id . '"><i class="fa fa-file-pdf-o"></i> View</a>';
+    $btn .= '<a target="_blank" class="btn btn-sm btn-info btn-xs btn-push" data-toggle="tooltip" data-placement="top" href="' . APP_URL . 'marketing/view?id=' . $id . '"><i class="fa fa-file-pdf-o"></i> View</a>';
     if ( ! in_array($status_id, [3, 4]) ) {
-        $btn .= '<a class="btn btn-sm btn-primary btn-xs btn-push" data-toggle="tooltip" data-placement="top" href="' . APP_URL . 'expenses/edit?id=' . $id . '"><i class="fa fa-pencil"></i> Edit</a>';
+        $btn .= '<a class="btn btn-sm btn-primary btn-xs btn-push" data-toggle="tooltip" data-placement="top" href="' . APP_URL . 'marketing/edit?id=' . $id . '"><i class="fa fa-pencil"></i> Edit</a>';
     }
 
     return $btn;

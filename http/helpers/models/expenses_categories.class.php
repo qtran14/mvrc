@@ -21,13 +21,14 @@ class Expenses_Categories {
 		return false;
 	}
 
-	public function all() {
+	public function all($app_type_id=0) {
+		if ( $app_type_id > 0 ) $this->db->where('app_type_id', $app_type_id);
 		return $this->db->get($this->table);
 	}
 
-	public function getList() {
+	public function getList($app_type_id=1) {
 		$list = [];
-		foreach ( $this->all() as $row ) $list[$row['id']] = $row['name'];
+		foreach ( $this->all($app_type_id) as $row ) $list[$row['id']] = $row['name'];
 
 		return $list;
 	}

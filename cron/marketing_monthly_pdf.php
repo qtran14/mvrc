@@ -41,7 +41,7 @@ foreach ( $results as $row ) {
 
 							WHERE 1=1
 								AND expenses.on_date<'{$thisMonth}'
-								AND expenses.app_type_id=1
+								AND expenses.app_type_id=2
 								AND expenses.status_id=2
 								AND expenses.account_hash='{$accountHash}'
 							ORDER BY expenses.on_date ASC
@@ -65,7 +65,7 @@ foreach ( $results as $row ) {
 							}
 						</style>
 					</head>
-					<body><h1>Main Expense History</h1>';
+					<body><h1>Marketing Expense History</h1>';
 		$table .= '<table>';
 			$table .= '<tr class="draw-line">';
 				$table .= '<th style="width:120px; padding: 0 2px;">Date</th>';

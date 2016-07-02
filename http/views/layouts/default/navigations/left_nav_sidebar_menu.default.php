@@ -32,6 +32,7 @@
         </a>
         <ul>
             <li<?= isset($data['active_expense_main']) ? ' class="'. $data['active_expense_main'] .'"' : ''; ?>><a href="/expenses">Main</a></li>
+            <li<?= isset($data['active_expense_marketing']) ? ' class="'. $data['active_expense_marketing'] .'"' : ''; ?>><a href="/marketing">Marketing</a></li>
         </ul>
     </li>
     <li class="submenu<?= isset($data['active_customers']) ? ' '. $data['active_customers'] : ''; ?>">
