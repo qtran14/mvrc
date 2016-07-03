@@ -2,7 +2,7 @@
 // dd($data);
 ?>
 <div class="header-content">
-    <h2><i class="fa fa-file-o"></i>Marketing <span>Products used for deals/promotions - detail explaination of products usage.</span></h2>
+    <h2><i class="fa fa-dollar"></i>Marketing <span>Products used for deals/promotions - detail explaination of products usage.</span></h2>
     <div class="breadcrumb-wrapper hidden-xs">
     </div>
 </div>

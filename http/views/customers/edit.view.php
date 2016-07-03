@@ -4,7 +4,7 @@
 ?>
 
 <div class="header-content">
-    <h2><i class="fa fa-file-o"></i>Customers | Edit</h2>
+    <h2><i class="fa fa-group"></i>Customers | Edit</h2>
     <div class="breadcrumb-wrapper hidden-xs">
     </div>
 </div>

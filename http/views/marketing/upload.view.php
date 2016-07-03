@@ -1,5 +1,5 @@
 <div class="header-content">
-    <h2><i class="fa fa-file-o"></i>Marketing</h2>
+    <h2><i class="fa fa-dollar"></i>Marketing</h2>
     <div class="breadcrumb-wrapper hidden-xs">
     </div>
 </div>

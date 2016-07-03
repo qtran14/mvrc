@@ -2,7 +2,7 @@
 // dd($data);
 ?>
 <div class="header-content">
-    <h2><i class="fa fa-file-o"></i>Expenses</h2>
+    <h2><i class="fa fa-dollar"></i>Expenses</h2>
     <div class="breadcrumb-wrapper hidden-xs">
     </div>
 </div>

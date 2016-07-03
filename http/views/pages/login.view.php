@@ -1,7 +1,3 @@
-<div class="header-content">
-    <h2><i class="fa fa-file-o"></i>Login</h2>
-</div>
-
 <div class="body-content animated fadeIn page-sound">
     <div id="sign-wrapper">
         <form class="sign-in form-horizontal shadow rounded no-overflow" action="" method="post">

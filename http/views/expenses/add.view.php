@@ -4,7 +4,7 @@
 ?>
 
 <div class="header-content">
-    <h2><i class="fa fa-file-o"></i>Expenses | Add</h2>
+    <h2><i class="fa fa-dollar"></i>Expenses | Add</h2>
     <div class="breadcrumb-wrapper hidden-xs">
     </div>
 </div>

@@ -9,7 +9,7 @@
 </style>
 
 <div class="header-content">
-    <h2><i class="fa fa-file-o"></i>Expenses | Edit</h2>
+    <h2><i class="fa fa-dollar"></i>Expenses | Edit</h2>
     <div class="breadcrumb-wrapper hidden-xs">
     </div>
 </div>

@@ -36,7 +36,7 @@ $htmlCustomJS = [
     // '/assets/admin/js/pages/blankon.dashboard.investor',
 ];
 
-
+$layoutPath     = 'login';
 
 renderView('pages/login');
 ?>

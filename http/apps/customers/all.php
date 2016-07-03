@@ -9,7 +9,6 @@ $extraWhere = " {$table}.account_hash = '{$loginInfo['account_hash']}' ";
 if ( $status > 0 ) $extraWhere .= " AND {$table}.status = '{$status}' ";
 
 
-
 $columns = [
     [ 'dt' => 0,                            'db' => 'first_name' ],
     [ 'dt' => 1,							'db' => 'last_name' ],
