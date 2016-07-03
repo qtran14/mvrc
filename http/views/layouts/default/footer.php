@@ -78,6 +78,13 @@ $(document).ready(function () {
             $.getJSON('/quick_notes/save?quick_note=' + quick_note, function (data) {
                 $('#iQuickNoteTable tbody').empty();
                 $('#iQuickNoteTable tbody').append(data.tr);
+
+                $('.cQuickNoteDelete').on('click', function () {
+                    var quick_note_id = $(this).data('quick_note_id');
+                    $('#row_' + quick_note_id).remove();
+
+                    $.getJSON('/quick_notes/delete?id=' + quick_note_id, function (data) {});
+                });
             });
         }
         else {
