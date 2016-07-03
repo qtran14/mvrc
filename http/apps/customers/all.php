@@ -17,6 +17,7 @@ $columns = [
     [ 'dt' => 3,                            'db' => 'phone' ],
     [ 'dt' => 4,                            'db' => 'last_call_date' ],
     [ 'dt' => 5,                            'db' => 'id' ],
+    [ 'dt' => 6, 'alias' => 'month_diff',   'db' => '(timestampdiff(MONTH, last_call_date, CURDATE()))' ],
 ];
 
 
@@ -40,6 +41,17 @@ function buildBtn($id) {
     return $btn;
 }
 
+function addFlag($month_diff) {
+    $flag = '';
+
+    if ( in_array($month_diff, [0]) ) $flag = ' <span class="glyphicon glyphicon-flag text-success"></span>';
+    if ( in_array($month_diff, [1, 2]) ) $flag = ' <span class="glyphicon glyphicon-flag text-primary"></span>';
+    if ( in_array($month_diff, [3, 4, 5]) ) $flag = ' <span class="glyphicon glyphicon-flag text-warning"></span>';
+    if ( $month_diff > 5 ) $flag = ' <span class="glyphicon glyphicon-flag text-danger"></span>';
+
+    return $flag;
+}
+
 $out = [];
 $total = 0.00;
 for ($i = 0; $i < count($results['data']); $i++) {
@@ -51,7 +63,7 @@ for ($i = 0; $i < count($results['data']); $i++) {
     $row[] = $data['last_name'];
     $row[] = $data['email'];
     $row[] = $data['phone'];
-    $row[] = formatDispayDate($data['last_call_date']);
+    $row[] = empty($data['last_call_date']) ? '' : formatDispayDate($data['last_call_date']) . addFlag($data['month_diff']);
     $row[] = buildBtn($data['id']);
 
     $out[] = $row;
