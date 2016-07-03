@@ -23,6 +23,7 @@ class Menu_System {
         return $this->db->rawQuery("SELECT *
                                     FROM menu_system
                                     WHERE 1=1
+                                        AND hidden = 0
                                         AND parent_id IS NULL
                                 ");
     }
@@ -31,6 +32,7 @@ class Menu_System {
         $results = $this->db->rawQuery("SELECT *
                                         FROM menu_system
                                         WHERE 1=1
+                                            AND hidden = 0
                                             AND parent_id='{$parent_id}'
                                     ");
         if ( ! empty($results) ) foreach ( $results as $i => $row ) $results[$i]['children'] = $this->getSubMenu($row['id']);
