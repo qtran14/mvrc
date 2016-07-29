@@ -112,7 +112,8 @@ foreach ( $results as $row ) {
 		$table .= '</table>';
 		$table .= '</body></html>';
 
-		$location = 'accounts' . DS . $accountHash . DS . 'expenses/pdfs';
+		$year = date('Y');
+		$location = 'accounts' . DS . $accountHash . DS . 'expenses/pdf' . DS . $year;
 		mkdirIfNotExist($location, 'public');
 
 		$filename = 'expenses_' . date('Y-m-d');
