@@ -31,9 +31,13 @@ if ( move_uploaded_file($from, $to) ) {
 	$gallery->save($inputData);
 
 
-	(new SimpleImage($to))->fit_to_width(150)->save(getPath('public') . DS . 'galleries' . DS . 'images/thumbnail' . DS . $name);
-	(new SimpleImage($to))->fit_to_width(350)->save(getPath('public') . DS . 'galleries' . DS . 'images/medium' . DS . $name);
-	(new SimpleImage($to))->fit_to_width(700)->save(getPath('public') . DS . 'galleries' . DS . 'images/large' . DS . $name);
+	// (new SimpleImage($to))->auto_orient()->best_fit(150, 200)->save(getPath('public') . DS . 'galleries' . DS . 'images/thumbnail' . DS . $name);
+	// (new SimpleImage($to))->auto_orient()->best_fit(350, 400)->save(getPath('public') . DS . 'galleries' . DS . 'images/medium' . DS . $name);
+	// (new SimpleImage($to))->auto_orient()->best_fit(700, 800)->save(getPath('public') . DS . 'galleries' . DS . 'images/large' . DS . $name);
+
+	(new SimpleImage($to))->auto_orient()->fit_to_width(150)->save(getPath('public') . DS . 'galleries' . DS . 'images/thumbnail' . DS . $name);
+	(new SimpleImage($to))->auto_orient()->fit_to_width(350)->save(getPath('public') . DS . 'galleries' . DS . 'images/medium' . DS . $name);
+	(new SimpleImage($to))->auto_orient()->fit_to_width(700)->save(getPath('public') . DS . 'galleries' . DS . 'images/large' . DS . $name);
 
 	die(json_encode(['error' => 0, 'msg' => 'success']));
 }

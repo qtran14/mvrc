@@ -8,7 +8,7 @@
             <p>
             <?php
                 $count = 0;
-                $break_count = 6;
+                $break_count = 7;
                 foreach ( $data['images'] as $image ) {
             ?>
                     <a class="fancybox-button" rel="fancybox-thumb" href="/galleries/images/large/<?= $image['name']; ?>" title="<?= $image['uploaded_name']; ?>">

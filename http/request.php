@@ -15,7 +15,7 @@ if ( Session::has('post_data') ) {
 // dd($_SESSION); 
 // dd($httpRequest);
 if ( file_exists(getPath('apps') . $httpRequest->route . '.php') ) {
-	
+	require_once getPath('apps') . $httpRequest->route . '.php';die;
 }
 
 

@@ -1,5 +1,4 @@
 <?php
-
 $htmlPageTitle = 'Gallery';
 
 $htmlPluginCSS = [
@@ -22,5 +21,6 @@ $htmlCustomJS = [
 
 $data['images'] = (new Galleries)->photo();
 
+$layoutPath     = 'gallery';
 renderView('pages/gallery');
 ?>
