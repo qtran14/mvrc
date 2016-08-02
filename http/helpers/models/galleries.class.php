@@ -17,6 +17,7 @@ class Galleries {
 	}
 
 	public function photo($page = 1, $limit = 20) {
+		$this->db->orderBy('created_at', 'desc');
 		return $this->db->get($this->table);
 	}
 }
