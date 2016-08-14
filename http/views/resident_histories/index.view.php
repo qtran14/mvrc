@@ -42,7 +42,7 @@
                 <div class="clearfix"></div>
             </div>
             <div class="panel-body">
-                <div class="row" id="iResidentHistoryTable"></div>
+                <div class="row table-responsive" id="iResidentHistoryTable"></div>
             </div>
         </div>
         <div class="modal-footer">
