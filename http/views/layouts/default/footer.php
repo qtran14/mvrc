@@ -152,6 +152,73 @@ $(document).ready(function () {
     </div>
 </div>
 
+
+<div class="modal fade launch-modal-photo" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-photo-viewer">
+      <div class="modal-content">
+          <div class="row">
+
+              <div class="col-md-12 col-sm-12 modal-photo-left">
+                  <div class="modal-photo">
+                      <img id="imageAnchor" src="" class="photo img-responsive" alt="...">
+                  </div>
+              </div>
+
+          </div>
+      </div>
+  </div>
+</div>
+
+
+<div class="modal fade member_resident_histories" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="panel panel-theme">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h3 class="panel-title">Resident Histories</h3>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-sm" data-dismiss="modal" data-action="remove" data-container="body" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table id="iQuickNoteTable" class="table table-striped table-lilac">
+                                    <thead>
+                                        <tr>
+                                            <th>Landlord</th>
+                                            <th>Phone</th>
+                                            <th>Email</th>
+                                            <th>Start Date</th>
+                                            <th>End Date</th>
+                                            <th>Address</th>
+                                            <th>City</th>
+                                            <th>State</th>
+                                            <th>Zip Code</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="iResidentHistoryTable">
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-theme" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 <!--/ END BODY -->
 

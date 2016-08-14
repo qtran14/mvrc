@@ -5,21 +5,7 @@ $member_id = $httpRequest->get['member_id'];
 $histories = (new ResidentHistories)->ofMember($member_id);
 
 if ( ! empty($histories) ) {
-    $table = '<table class="table table-striped table-lilac dataTable">';
-    $table .= '<thead>';
-        $table .= '<tr>';
-            $table .= '<th data-class="expand">Landlord</th>';
-            $table .= '<th data-hide="phone">Phone</th>';
-            $table .= '<th data-hide="phone">Email</th>';
-            $table .= '<th data-hide="phone">Start Date</th>';
-            $table .= '<th data-hide="phone">End Date</th>';
-            $table .= '<th data-hide="phone">Address</th>';
-            $table .= '<th data-hide="phone">City</th>';
-            $table .= '<th data-hide="phone">State</th>';
-            $table .= '<th data-hide="phone">Zip Code</th>';
-        $table .= '</tr>';
-    $table .= '</thead>';
-    $table .= '<tbody>';
+    $table = '';
     foreach ( $histories as $row ) {
         $table .= '<tr>';
             $table .= '<td>' . $row['landlord'] . '</td>';
@@ -33,7 +19,6 @@ if ( ! empty($histories) ) {
             $table .= '<td>' . $row['zip_code'] . '</td>';
         $table .= '</tr>';
     }
-    $table .= '</tbody></table>';
 
     die(json_encode(['error' => 0, 'table' => $table]));
 }
