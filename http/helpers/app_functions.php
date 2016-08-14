@@ -1,6 +1,17 @@
 <?php
 
 
+if ( ! function_exists('displayPhone')) {
+  function displayPhone($phone) {
+    $phone = preg_replace("/[^\d]/", "", $phone);
+    if(strlen($phone) == 7)       return preg_replace("/(\d{3})(\d{4})/", "$1-$2", $phone);
+    else if(strlen($phone) == 10) return preg_replace("/(\d{3})(\d{3})(\d{4})/", "($1) $2-$3", $phone);
+    else if(strlen($phone) == 11) return preg_replace("/(\d{1})(\d{3})(\d{3})(\d{4})/", "$1 ($2) $3-$4", $phone);
+    
+    return $phone;
+  }
+}
+
 if ( ! function_exists('displayDate')) {
   function displayDate($date) {
     if ( ! empty($date) ) return date('m/d/Y', strtotime($date));
