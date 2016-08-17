@@ -57,7 +57,7 @@
                         <div class="col-md-12">
                             <div class="col-md-6">
                            <div style="margin-top: -1px;" class="table-responsive">
-                                <table class="table table-striped table-theme">
+                                <table class="table table-striped table-inverse">
                                     <thead>
                                         <tr>
                                             <th style="width: 20%;" class="text-center border-right">Category ID</th>
