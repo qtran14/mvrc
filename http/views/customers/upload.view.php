@@ -15,7 +15,7 @@
 
                     <div class="row">
                         <div class="col-md-6">
-                            <a href="/upload_templates/customers/add_customers.csv" class="btn btn-theme">Download template...</a>
+                            <a href="/upload_templates/customers/add_customers.csv" class="btn btn-lilac">Download template...</a>
                         </div>
                         <div class="col-md-6 text-right"></div>
                     </div>

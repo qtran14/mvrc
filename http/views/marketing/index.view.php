@@ -16,8 +16,8 @@
                 <div class="panel-heading no-padding">
                     <div class="row">
                         <div class="col-md-8">
-                            <a href="/marketing/add" class="btn btn-success">Add</a>
-                            <a href="/marketing/upload" class="btn btn-theme">Upload...</a>
+                            <a href="/marketing/add" class="btn btn-theme">Add</a>
+                            <a href="/marketing/upload" class="btn btn-lilac">Upload...</a>
                         </div>
                         <div class="col-md-4"></div>
                     </div>
