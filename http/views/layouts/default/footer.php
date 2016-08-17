@@ -129,7 +129,7 @@ $(document).ready(function () {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
-                                <table id="iQuickNoteTable" class="table table-striped">
+                                <table id="iQuickNoteTable" class="table table-striped table-inverse">
                                     <thead>
                                         <tr>
                                             <th style="width: 200px;" class="text-center border-top">Date</th>
@@ -188,7 +188,7 @@ $(document).ready(function () {
                     <div class="row">
                         <div class="col-md-12">
                             <div class="table-responsive">
-                                <table id="iQuickNoteTable" class="table table-striped table-lilac">
+                                <table id="iQuickNoteTable" class="table table-striped table-inverse">
                                     <thead>
                                         <tr>
                                             <th>Landlord</th>

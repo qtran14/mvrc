@@ -11,6 +11,7 @@ $htmlPluginJS   = [
 	'/assets/global/plugins/bower_components/bootstrap-fileupload/js/bootstrap-fileupload.min',
 ];
 
+$data['expense_category_list'] = (new Expenses_Categories)->getList();
 
 renderView('expenses/upload');
 ?>
