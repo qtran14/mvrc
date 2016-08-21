@@ -102,7 +102,7 @@
 				                <tfoot>
 				                	<tr>
 				                		<th class="text-right" colspan="2">Total</th>
-				                		<th class="text-right"><?= number_format($grand_total, 2); ?></th>
+				                		<th class="text-right">$<?= number_format($grand_total, 2); ?></th>
 				                		<th>&nbsp;</th>
 				                	</tr>
 				                </tfoot>
