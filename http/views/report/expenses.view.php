@@ -10,6 +10,10 @@
 		height: 500px;
 	    overflow-y: scroll;
 	}
+
+	.zoomContainer .zoomWindowContainer .zoomWindow {
+		z-index: 1400 !important;
+	}
 </style>
 <div class="header-content">
     <h2><i class="glyphicon glyphicon-file"></i>Report | <?= $data['header_title']; ?></h2>

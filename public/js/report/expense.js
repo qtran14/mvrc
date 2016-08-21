@@ -23,6 +23,8 @@ var expense = function ()  {
                     $('#iReportDetailTableBody').html(data.tr);
                     $('#iReportDetailTableFoot').html(data.tfoot);
                     expense.expenseInfo();
+
+                    $('.zoom-images').elevateZoom();
                 });
             });
 

@@ -26,6 +26,7 @@
 <script src="/assets/global/plugins/bower_components/bootstrap-datepicker-vitalets/js/bootstrap-datepicker.js"></script>
 <script src="/assets/global/plugins/bower_components/moment/min/moment.min.js"></script>
 <script src="/assets/global/plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<script src="/assets/global/plugins/bower_components/elevatezoom-3.0.8/jquery.elevateZoom-3.0.8.min.js"></script>
 <!--/ END CORE PLUGINS -->
 
 <!-- START @PAGE LEVEL PLUGINS -->
