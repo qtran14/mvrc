@@ -47,7 +47,7 @@ if ( ! empty($results) ) {
 			$tr .= '<td>' . $row['category_name'] . '</td>';
 			$tr .= '<td>' . encodeQuote($row['name']) . '</td>';
 			$tr .= '<td>' . encodeQuote($row['description']) . '</td>';
-			$tr .= '<td>$' . number_format($row['amount']) . '</td>';
+			$tr .= '<td>$' . number_format($row['amount'], 2) . '</td>';
 			$tr .= '<td>' . $row['status_name'] . '</td>';
 			$tr .= '<td><a data-category="' . $catetory_id . '" data-report="' . $report . '" data-expense="' . $row['hash'] . '" href="#" class="btn btn-sm btn-primary btn-xs cEditReportDetail" data-target=".cReportDetailEditModal" data-keyboard="false" data-backdrop="static" data-toggle="modal"><i class="fa fa-pencil"></i></a></td>';
 		$tr .= '</tr>';
