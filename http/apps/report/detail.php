@@ -39,7 +39,7 @@ if ( ! empty($results) ) {
 	foreach ( $results as $row ) {
 		$total += $row['amount'];
 		$picture = '&nbsp;';
-		if ( ! empty($row['picture']) ) $picture = '<img width="150px;" src="/accounts/f2cf34545db4/images/thumbnail/' . $row['picture'] . '">';
+		if ( ! empty($row['picture']) ) $picture = '<img width="150px;" src="/accounts/'. $account_info['hash'] . '/images/thumbnail/' . $row['picture'] . '">';
 
 		$tr .= '<tr>';
 			$tr .= '<td>' .  $picture . '</td>';
