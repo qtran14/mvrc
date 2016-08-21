@@ -68,6 +68,8 @@ var HistoryList = function ()  {
 
                     var json = table.ajax.json();
                     $('#iGrandTotalCancelled').html('$' + json.grand_total);
+
+                    $('.zoom-images').elevateZoom();
                 },
                 footerCallback: function ( row, data, start, end, display ) {
                 },
@@ -131,6 +133,8 @@ var HistoryList = function ()  {
 
                     var json = table.ajax.json();
                     $('#iGrandTotalCompleted').html('$' + json.grand_total);
+
+                    $('.zoom-images').elevateZoom();
                 },
                 footerCallback: function ( row, data, start, end, display ) {
                 },
@@ -194,6 +198,8 @@ var HistoryList = function ()  {
 
                     var json = table.ajax.json();
                     $('#iGrandTotalVerified').html('$' + json.grand_total);
+
+                    $('.zoom-images').elevateZoom();
                 },
                 footerCallback: function ( row, data, start, end, display ) {
                 },
@@ -257,6 +263,8 @@ var HistoryList = function ()  {
 
                     var json = table.ajax.json();
                     $('#iGrandTotalAll').html('$' + json.grand_total);
+
+                    $('.zoom-images').elevateZoom();
                 },
                 footerCallback: function ( row, data, start, end, display ) {
                 },

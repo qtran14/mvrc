@@ -44,7 +44,7 @@ function getImage($expenseHash, $accountHash) {
 
     $img = '';
     if ( ! empty($result) ) {
-        $img = '<img src="/accounts/' . $accountHash . '/images/thumbnail/' . $result['0']['name'] . '" width="150px;" />';
+        $img = '<img class="zoom-images" data-zoom-image="/accounts/' . $accountHash . '/images/large/' . $result['0']['name'] . '" src="/accounts/' . $accountHash . '/images/thumbnail/' . $result['0']['name'] . '" width="150px;" />';
     }
 
     return $img;
