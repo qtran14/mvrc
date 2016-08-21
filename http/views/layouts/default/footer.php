@@ -219,6 +219,86 @@ $(document).ready(function () {
 </div>
 
 
+<div class="modal fade cReportDetailModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="panel panel-theme">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h3 class="panel-title">Report Details</h3>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-sm" data-dismiss="modal" onclick="javascript:window.location.reload()" data-action="remove" data-container="body" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="table-responsive">
+                                <table id="cReportDetailModalTable" class="table table-striped table-inverse">
+                                    <thead>
+                                        <tr>
+                                            <th>Picture</th>
+                                            <th>Date</th>
+                                            <th>Category</th>
+                                            <th>Name</th>
+                                            <th>Notes</th>
+                                            <th>Total</th>
+                                            <th>Status</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="iReportDetailTableBody">
+                                    </tbody>
+                                    <tfoot id="iReportDetailTableFoot"></tfoot>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" id="iReportDetailModalClose" onclick="javascript:window.location.reload()" class="btn btn-theme" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade cReportDetailEditModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="panel panel-lilac">
+                <div class="panel-heading">
+                    <div class="pull-left">
+                        <h3 class="panel-title">Edit Form</h3>
+                    </div>
+                    <div class="pull-right">
+                        <button class="btn btn-sm" data-dismiss="modal" data-action="remove" data-container="body" data-toggle="tooltip" data-placement="top" data-title="Remove"><i class="fa fa-times"></i></button>
+                    </div>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="panel-body">
+                    
+                    <div class="row">
+                        <div class="col-md-12" id="iReportDetailEditModalForm">
+                            
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-lilac" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 <!--/ END BODY -->
 

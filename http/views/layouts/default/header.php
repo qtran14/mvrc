@@ -146,12 +146,17 @@
             -->
             <aside id="sidebar-left" class="sidebar-circle">
                 <?php require_once getPath('views') .'/layouts/default/navigations/left_nav_profile.default.php'; ?>
-                <?php require_once getPath('views') .'/layouts/default/navigations/left_nav_sidebar_menu.default.php'; ?>
-                <?php require_once getPath('views') .'/layouts/default/navigations/left_nav_footer.default.php'; ?>
+                <?php
+                    if ( Session::isLogin() ) {
+                        require_once getPath('views') .'/layouts/default/navigations/left_nav_sidebar_menu.default.php'; 
+                        require_once getPath('views') .'/layouts/default/navigations/left_nav_footer.default.php';
+                    } 
+                 ?>
             </aside><!-- /#sidebar-left -->
             <!--/ END SIDEBAR LEFT -->
 
             <!-- START @PAGE CONTENT -->
+            <br />
             <section id="page-content">
                 <?php if ( Session::hasFlash('success') ) { ?>
                     <p class="alert alert-success"><?= Session::flash('success'); ?></p>

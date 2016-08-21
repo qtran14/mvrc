@@ -10,7 +10,8 @@ if ( $httpRequest->is('post') ) {
 
 	if ( password_verify($userInfo['salt'].$post['password'].$userInfo['pepper'], $userInfo['pw_hash']) ) {
 		Session::set('userLogin', 1);	
-		Session::set('user', $userInfo);	
+		Session::set('user', $userInfo);
+		Session::set('account_info', (new Accounts)->info($userInfo['account_hash']));
 
 		$httpRequest->referer(Session::get('referer'));	
 	}

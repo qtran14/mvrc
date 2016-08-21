@@ -17,65 +17,37 @@ require_once ROOT_DIR . DS . 'global_helpers.php';
 require_once CRON_DIR . DS . 'config.php';
 
 
-function pullActiveAccounts() {
-	global $db;
+$sql = "SELECT hash FROM accounts";
+$results = $db->rawQuery($sql);
 
-	return $db->rawQuery("
-					SELECT 
-							accounts.id, 
-							accounts.hash 
-					FROM accounts 
-					WHERE 1=1
-						AND accounts.status=1
-				");
-}
+$thisMonth = date('Y-m') . '-01';
 
-function pullAllExpenses($account_hash, $this_month, $app_type_id) {
-	global $db;
+foreach ( $results as $row ) {
+	$accountHash = $row['hash'];
 
-	return $db->rawQuery("
-			SELECT 
-					expenses.id,
-					expenses.on_date,
-					expenses.name,
-					expenses.amount,
-					expenses.description,
-					expenses.category_id,
-					expenses_categories.name AS category_name,
-					(SELECT group_concat(expenses_pictures.name) FROM expenses_pictures WHERE expenses_pictures.expense_hash=expenses.hash) AS images
+	$expenses = $db->rawQuery("SELECT 
+								expenses.id,
+								expenses.on_date,
+								expenses.name,
+								expenses.amount,
+								expenses.description,
+								expenses_categories.name AS category_name,
+								(SELECT group_concat(expenses_pictures.name) FROM expenses_pictures WHERE expenses_pictures.expense_hash=expenses.hash) AS images
 
-			FROM expenses
-				LEFT JOIN expenses_categories ON 1=1
-											AND expenses_categories.id=expenses.category_id
+							FROM expenses
 
-			WHERE 1=1
-				AND expenses.on_date<'{$this_month}'
-				AND expenses.app_type_id='{$app_type_id}'
-				AND expenses.status_id=2
-				AND expenses.account_hash='{$account_hash}'
-			ORDER BY expenses.on_date ASC
-		");
-}
+								LEFT JOIN expenses_categories ON 1=1
+															AND expenses_categories.id=expenses.category_id
 
-function thereIsNo($accounts) {
-	if ( empty($accounts) ) return true;
-	return false;
-}
+							WHERE 1=1
+								AND expenses.on_date<'{$thisMonth}'
+								AND expenses.app_type_id=2
+								AND expenses.status_id=2
+								AND expenses.account_hash='{$accountHash}'
+							ORDER BY expenses.on_date ASC
+						");
 
-
-$this_month = date('Y-m') . '-01';
-$start_period = date('Y-m-d', strtotime($this_month  . " -1 month"));
-$end_period = date('Y-m-d', strtotime($this_month  . " -1 day"));
-$app_type_id = 1;
-
-$active_accounts = pullActiveAccounts();
-if ( thereIsNo($active_accounts) ) die("No account exists in the system!");
-
-try {
-	foreach ( $active_accounts as $account ) {
-		$expenses = pullAllExpenses($account['hash'], $this_month, $app_type_id);
-		if ( thereIsNo($expenses) ) continue;
-
+	if ( ! empty($expenses) ) {
 		$table = '';
 		$table .= '<html>
 					<head> 
@@ -93,7 +65,7 @@ try {
 							}
 						</style>
 					</head>
-					<body><h1>Main Expense History</h1>';
+					<body><h1>Marketing Expense History</h1>';
 		$table .= '<table>';
 			$table .= '<tr class="draw-line">';
 				$table .= '<th style="width:120px; padding: 0 2px;">Date</th>';
@@ -105,31 +77,13 @@ try {
 
 		$grandTotal = 0.00;
 
-
-		$db->startTransaction();
-
-		$report_id = $db->insert('report', [
-				'account_id' => $account['id'],
-				'name' => time() . '_expense_' . generateUUID(10),
-				'type' => $app_type_id,
-				'generated_by' => 1,
-				'start_period' => $start_period,
-				'end_period' => $end_period,
-			]);
-
 		foreach ( $expenses as $row ) {
-			$db->where('id', $row['id']);
-			$db->update('expenses', ['status_id' => 3]);
-
-			$db->insert('report_detail', [
-					'report_id' => $report_id,
-					'category_id' => $row['category_id'],
-					'expense_id' => $row['id'],
-					'created_by' => 1,
-				]);
+			$sql = "UPDATE expenses SET expenses.status_id=3 WHERE expenses.id='{$row['id']}'";
+			$db->rawQuery($sql);
 
 
 			$grandTotal += $row['amount'];
+
 			$table .= '<tr class="draw-line">';
 				$table .= '<td>' . displayDate($row['on_date']) . '</td>';
 				$table .= '<td>' . $row['category_name'] . '</td>';
@@ -143,7 +97,7 @@ try {
 				$table .= '<tr>';
 					// $table .= '<td valign="top">Pictures</td>';
 					$table .= '<td colspan="5">';
-						foreach ( $imageArray as $image ) $table .= '<img style="margin:5px 10px" src="' . PUBLIC_DIR . DS . 'accounts' . DS . $account['hash'] . DS . 'images/medium' . DS . $image . '" width="150px;" />';
+						foreach ( $imageArray as $image ) $table .= '<img style="margin:5px 10px" src="' . PUBLIC_DIR . DS . 'accounts' . DS . $accountHash . DS . 'images/medium' . DS . $image . '" width="150px;" />';
 					$table .= '</td>';
 
 				$table .= '</tr>';
@@ -159,7 +113,7 @@ try {
 		$table .= '</body></html>';
 
 		$year = date('Y');
-		$location = 'accounts' . DS . $account['hash'] . DS . 'expenses/pdf' . DS . $year;
+		$location = 'accounts' . DS . $accountHash . DS . 'expenses/pdf' . DS . $year;
 		mkdirIfNotExist($location, 'public');
 
 		$filename = 'expenses_' . date('Y-m-d');
@@ -185,12 +139,5 @@ try {
 		$body = 'Attached is your monthly expenses.';
 		$attachments[] = $pdfFile;
 		sendMail($to, $subject, $body, $from, $attachments);
-
-
-		$db->commit();
 	}
-
-}
-catch ( Exception $e ) {
-    $db->rollback();
 }
