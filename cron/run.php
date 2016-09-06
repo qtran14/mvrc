@@ -15,5 +15,5 @@ require_once ROOT_DIR . DS . 'app_path.php';
 require_once ROOT_DIR . DS . 'config.php';
 
 
-require_once KERNEL_DIR . DS . 'app.class.php';
+require_once CRON_DIR . DS . 'app.class.php';
 (new App)->process($argv);

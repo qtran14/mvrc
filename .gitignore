@@ -1,5 +1,6 @@
-.env.php
+env.php
 storage/*
 public/accounts/*
 public/upload_templates/*
 public/galleries/*
+cron/log_history/*
